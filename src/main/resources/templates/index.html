@@ -36,21 +36,22 @@
         <tr th:each="libro:${libros}">
           <td th:text="${libro.id}"></td>
           <td th:text="${libro.titulo}"></td>
-          <td th:text="${libro.portada}"></td>
+          <td><img th:alt="${libro.portada}" th:src="@{'/images/'+${libro.portada}}" style="max-width: 25%; max-height: 25%;"/></td>
           <td th:text="${libro.autor}"></td>
           <td th:text="${libro.genero}"></td>
           <td th:text="${libro.idioma}"></td>
           <td th:text="${libro.fecha}"></td>
           <td>
-            <a class="btn btn-warning">Editar</a>
-            <a class="btn btn-danger">Eliminar</a>
+            <a th:href="@{/editar/}+${libro.id}" class="btn btn-warning">Editar</a>
+            <a th:onclick="eliminar([[${libro.id}]])" class="btn btn-danger">Eliminar</a>
         </tr>
       </tbody>
 
   </div>
-
-
   </table>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="funciones.js"></script>
 </body>
 
 </html>

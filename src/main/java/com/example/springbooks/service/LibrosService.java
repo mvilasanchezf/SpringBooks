@@ -24,7 +24,7 @@ public class LibrosService  implements ILibrosService{
 
     @Override
     public Optional <Libros> listarId(int id) {
-        return null;
+        return data.findById(id);
     }
 
     @Override
