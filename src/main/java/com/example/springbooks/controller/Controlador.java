@@ -10,7 +10,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping
@@ -29,7 +31,12 @@ public class Controlador {
     @GetMapping("/new")
     public String agregar(Model model) {
         model.addAttribute("libro", new Libros());
-        return "form";
+        return "formlibro";
+    }
+    @PostMapping("/save")
+    public String save(@Validated Libros l, Model model){
+        service.save(l);
+        return "redirect:/listar";
     }
     
 }

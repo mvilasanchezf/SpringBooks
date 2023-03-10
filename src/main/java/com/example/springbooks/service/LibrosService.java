@@ -28,9 +28,13 @@ public class LibrosService  implements ILibrosService{
     }
 
     @Override
-    public int save(Libros p) {
-       
-        return 0;
+    public int save(Libros l) {
+       int res = 0;
+         Libros libro = data.save(l);
+            if(!libro.equals(null)) {
+                res = 1;
+            }
+        return res;
     }
 
     @Override
